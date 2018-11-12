@@ -2,7 +2,9 @@ package calc;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.text.NumberFormat;
 
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -29,6 +31,18 @@ public class TrigonometryCalc {
 		gbc.gridx=0;
 		gbc.gridy=0;
 		panel.add(title,gbc);
+		
+		NumberFormat nf=NumberFormat.getNumberInstance();
+		nf.setGroupingUsed(false);
+		JFormattedTextField text=new JFormattedTextField(nf);
+		
+//		JTextField input=new JTextField();
+		gbc.fill=GridBagConstraints.CENTER;
+		gbc.gridwidth=2;
+		gbc.gridx=0;
+		gbc.gridy=1;
+		gbc.ipadx=30;
+		panel.add(text,gbc);
 		
 		//結束配置 顯示視窗
 		frame.setVisible(true);
