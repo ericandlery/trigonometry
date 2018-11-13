@@ -12,6 +12,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 import calc.mode.CalcMode;
 
@@ -64,6 +65,29 @@ public class TrigonometryCalc {
 		
 		radios.add(radio1);
 		radios.add(radio2);
+		
+		gbc.gridwidth=1;
+		
+		gbc.gridx=0;
+		gbc.gridy=2;
+		panel.add(radio1,gbc);
+		gbc.gridx=1;
+		gbc.gridy=2;
+		panel.add(radio2,gbc);
+		
+		JLabel sin=new JLabel("SIN()");
+		sin.setHorizontalAlignment(JLabel.CENTER);
+		JLabel cos=new JLabel("COS()");
+		cos.setHorizontalAlignment(JLabel.CENTER);
+		JLabel tan=new JLabel("TAN()");
+		tan.setHorizontalAlignment(JLabel.CENTER);
+		
+		JTextField sinOut=new JTextField();
+		sinOut.setHorizontalAlignment(JLabel.LEFT);
+		JTextField cosOut=new JTextField();
+		cosOut.setHorizontalAlignment(JLabel.LEFT);
+		JTextField tanOut=new JTextField();
+		tanOut.setHorizontalAlignment(JLabel.LEFT);
 		
 		//結束配置 顯示視窗
 		frame.setVisible(true);
