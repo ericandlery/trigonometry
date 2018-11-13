@@ -4,9 +4,12 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -88,6 +91,57 @@ public class TrigonometryCalc {
 		cosOut.setHorizontalAlignment(JLabel.LEFT);
 		JTextField tanOut=new JTextField();
 		tanOut.setHorizontalAlignment(JLabel.LEFT);
+		
+		//打包計算結果欄位
+		Map<String,JTextField> outs=new HashMap<>();
+		outs.put("sin",sinOut);
+		outs.put("cos",cosOut);
+		outs.put("tan",tanOut);
+				
+		gbc.fill=GridBagConstraints.HORIZONTAL;
+		gbc.gridy=4;
+				
+		JLabel empty1=new JLabel("計算");
+		empty1.setHorizontalAlignment(JLabel.RIGHT);
+		JLabel empty2=new JLabel("結果");
+		empty2.setHorizontalAlignment(JLabel.LEFT);
+		gbc.gridx=0;
+		panel.add(empty1,gbc);
+		gbc.gridx=1;
+		panel.add(empty2,gbc);
+				
+		gbc.gridy=5;
+				
+		gbc.gridx=0;
+		panel.add(sin,gbc);
+		gbc.gridx=1;
+		gbc.ipadx=70;
+		panel.add(sinOut,gbc);
+				
+		gbc.gridy=6;
+				
+		gbc.gridx=0;
+		panel.add(cos,gbc);
+		gbc.gridx=1;
+		gbc.ipadx=70;
+		panel.add(cosOut,gbc);
+				
+		gbc.gridy=7;
+				
+		gbc.gridx=0;
+		panel.add(tan,gbc);
+		gbc.gridx=1;
+		gbc.ipadx=70;
+		panel.add(tanOut,gbc);
+				
+		gbc.gridy=8;
+				
+		gbc.fill=GridBagConstraints.NONE;
+		JButton calc=new JButton("計算");
+		gbc.gridwidth=2;
+		gbc.gridx=0;
+		gbc.ipadx=1;
+		panel.add(calc,gbc);
 		
 		//結束配置 顯示視窗
 		frame.setVisible(true);
