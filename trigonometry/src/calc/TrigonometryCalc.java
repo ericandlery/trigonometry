@@ -2,6 +2,8 @@ package calc;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -16,7 +18,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.Timer;
 
+import calc.action.PreAction;
+import calc.bean.CalcBean;
 import calc.mode.CalcMode;
 
 public class TrigonometryCalc {
@@ -142,6 +147,41 @@ public class TrigonometryCalc {
 		gbc.gridx=0;
 		gbc.ipadx=1;
 		panel.add(calc,gbc);
+		
+		//設定初始值
+		CalcBean cb=new CalcBean();
+		PreAction listener=new PreAction(cb,outs);
+		
+		//程式剛開始時設定初始模式
+		Timer startup=new Timer(0,new ActionListener() {
+					
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				for(JRadioButton bt:radios) {
+					if(bt.isSelected()==true) {
+						String value=bt.getText();
+								
+						for(CalcMode cm:CalcMode.values()) {
+							if(cm.getMode().equals(value)) {
+								cb.setMode(cm);
+							}
+						}
+					}
+				}
+				double degree=0;
+						
+				try {
+					degree=Double.valueOf(text.getText());
+				}catch(NumberFormatException ex) {
+					degree=0;
+				}
+				cb.setDegree(degree);
+				listener.setTemp(cb);
+				System.out.println("initialization finished");
+			}
+		});
+		startup.setRepeats(false);
+		startup.start();
 		
 		//結束配置 顯示視窗
 		frame.setVisible(true);
