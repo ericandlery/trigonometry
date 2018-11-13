@@ -19,6 +19,9 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.Timer;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.Document;
 
 import calc.action.PreAction;
 import calc.bean.CalcBean;
@@ -182,6 +185,36 @@ public class TrigonometryCalc {
 		});
 		startup.setRepeats(false);
 		startup.start();
+		
+		//設定模式按鈕
+		radio1.addActionListener(listener);
+		radio2.addActionListener(listener);
+		//設定輸入值欄位
+		Document doc=text.getDocument();
+		doc.addDocumentListener(new DocumentListener() {
+			@Override
+			public void removeUpdate(DocumentEvent e) {
+//				System.out.println("remove");
+//				insertUpdate(e);
+			}
+			@Override
+			public void insertUpdate(DocumentEvent e) {
+				Double i=0D;
+				try {
+					i=Double.valueOf(e.getDocument().getText(0,e.getDocument().getLength()));
+				}catch(Exception ex) {
+					i=0D;
+				}
+//				System.out.println("i "+i);
+				listener.getTemp().setDegree(i);
+			}
+			@Override
+			public void changedUpdate(DocumentEvent e) {
+				throw new RuntimeException();
+			}
+		});
+		//設定計算按鈕
+		calc.addActionListener(listener);
 		
 		//結束配置 顯示視窗
 		frame.setVisible(true);
