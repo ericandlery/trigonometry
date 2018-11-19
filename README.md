@@ -6,4 +6,4 @@
 <p>To Be Continued......</p>
 <hr>
 <h2>Screenshots</h2>
-![text](trigonometry/trigonometry/demo/resources/images/demo1.gif)
+<img src="/trigonometry/demo/resources/images/demo1.PNG"/>
