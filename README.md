@@ -6,4 +6,4 @@
 <p>To Be Continued......</p>
 <hr>
 <h2>Screenshots</h2>
-![image](https://github.com/ericandlery/trigonometry/blob/master/trigonometry/demo/resources/images/demo1.PNG)
+![image](trigonometry/demo/resources/images/demo1.PNG)
